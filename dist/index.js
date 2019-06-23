@@ -56,7 +56,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  width: 90%;\n  max-width: 1000px;\n  min-width: 300px;\n  padding: 1%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  width: ", ";\n  max-width: 1000px;\n  min-width: 300px;\n  padding: 1%;\n  box-sizing: border-box;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -67,7 +67,9 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Container = _styledComponents["default"].div(_templateObject());
+var Container = _styledComponents["default"].div(_templateObject(), function (props) {
+  return props.width || '90%';
+});
 
 var Table = _styledComponents["default"].table(_templateObject2(), _constants.COLORS.gray);
 
@@ -141,12 +143,14 @@ function (_Component) {
           dayNameTextStyle = _this$props.dayNameTextStyle,
           dayTextStyle = _this$props.dayTextStyle,
           activeDayStyle = _this$props.activeDayStyle,
-          inactiveDayStyle = _this$props.inactiveDayStyle;
+          inactiveDayStyle = _this$props.inactiveDayStyle,
+          width = _this$props.width;
       return _react["default"].createElement(Container, {
         ref: function ref(_ref) {
           return _this2.calendar = _ref;
         },
-        style: style
+        style: style,
+        width: width
       }, _react["default"].createElement(_topBar["default"], {
         date: date,
         onPrevClick: function onPrevClick() {
@@ -182,6 +186,7 @@ _defineProperty(CalendarMonthView, "propTypes", {
   // renderDay is a callback, which allows custom rendering of the given date onto the div
   // render day is called with a parameter for ISO-8601 string of the current day
   renderDay: _propTypes["default"].func,
+  width: _propTypes["default"].string,
   style: _propTypes["default"].object,
   titleTextStyle: _propTypes["default"].object,
   dayNameTextStyle: _propTypes["default"].object,

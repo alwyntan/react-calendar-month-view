@@ -10,10 +10,11 @@ import { COLORS, SMALL_CALENDAR_WIDTH } from './constants';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: ${props => props.width || '90%'};
   max-width: 1000px;
   min-width: 300px;
   padding: 1%;
+  box-sizing: border-box;
 `;
 
 const Table = styled.table`
@@ -26,6 +27,7 @@ export default class CalendarMonthView extends Component {
     // renderDay is a callback, which allows custom rendering of the given date onto the div
     // render day is called with a parameter for ISO-8601 string of the current day
     renderDay: PropTypes.func,
+    width: PropTypes.string,
     style: PropTypes.object,
     titleTextStyle: PropTypes.object,
     dayNameTextStyle: PropTypes.object,
@@ -73,10 +75,11 @@ export default class CalendarMonthView extends Component {
       dayNameTextStyle,
       dayTextStyle,
       activeDayStyle,
-      inactiveDayStyle
+      inactiveDayStyle,
+      width
     } = this.props;
     return (
-      <Container ref={ref => (this.calendar = ref)} style={style}>
+      <Container ref={ref => (this.calendar = ref)} style={style} width={width}>
         <TopBar
           date={date}
           onPrevClick={() => this.setState({ date: date.subtract(1, 'month') })}

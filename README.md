@@ -57,13 +57,16 @@ class App extends Component {
 
 ### Props
 
-The defaults for the props are null, except for renderDay, which is a function that returns nothing.
+| prop             | type     | default       | description                                                                                                                                                        |
+| ---------------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| width            | string   | "90%"         | Specifies the width of the calendar (height is dynamically set and therefore cannot be customized). Examples. "500px", "90vw", "90%"                               |
+| renderDay        | function | null function | Callback used to render a given day. renderDay will be called a string parameter in the format of a ISO-8601 string that represents the current day being rendered |
+| titleTextStyle   | object   | null          | Custom styles for the title text                                                                                                                                   |
+| dayNameTextStyle | object   | null          | Custom styles for the day names (header row of the calendar)                                                                                                       |
+| dayTextStyle     | object   | null          | Custom styles for the numbers that correspond to the days on the calendar                                                                                          |
+| activeDayStyle   | object   | null          | Custom styles for the calendar tile corresponding to the current day                                                                                               |
+| inactiveDayStyle | object   | null          | Custom styles for the calendar tile corresponding days that are not the current day                                                                                |
 
-| prop             | type     | description                                                                                                                                                        |
-| ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| renderDay        | function | Callback used to render a given day. renderDay will be called a string parameter in the format of a ISO-8601 string that represents the current day being rendered |
-| titleTextStyle   | object   | Custom styles for the title text                                                                                                                                   |
-| dayNameTextStyle | object   | Custom styles for the day names (header row of the calendar)                                                                                                       |
-| dayTextStyle     | object   | Custom styles for the numbers that correspond to the days on the calendar                                                                                          |
-| activeDayStyle   | object   | Custom styles for the calendar tile corresponding to the current day                                                                                               |
-| inactiveDayStyle | object   | Custom styles for the calendar tile corresponding days that are not the current day                                                                                |
+### Notes
+
+Use the width to control the size of the calendar component.

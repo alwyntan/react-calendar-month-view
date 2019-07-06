@@ -46,7 +46,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  border-spacing: 4px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  color: ", ";\n  border-spacing: 4px;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;

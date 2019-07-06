@@ -18,6 +18,7 @@ const Container = styled.div`
 `;
 
 const Table = styled.table`
+  width: 100%;
   color: ${COLORS.gray};
   border-spacing: 4px;
 `;

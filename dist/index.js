@@ -112,6 +112,18 @@ function (_Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "_handleMonthChange", function (months) {
+      var onMonthChange = _this.props.onMonthChange;
+
+      var newDate = _this.state.date.add(months, 'month');
+
+      _this.setState({
+        date: newDate
+      });
+
+      onMonthChange((0, _moment["default"])(newDate).startOf('month').toISOString());
+    });
+
     return _this;
   }
 
@@ -122,6 +134,7 @@ function (_Component) {
       this._handleWindowResize();
 
       window.addEventListener('resize', this._handleWindowResize);
+      this.props.onMonthChange((0, _moment["default"])(this.state.date).startOf('month'));
     }
   }, {
     key: "componentWillUnmount",
@@ -154,14 +167,10 @@ function (_Component) {
       }, _react["default"].createElement(_topBar["default"], {
         date: date,
         onPrevClick: function onPrevClick() {
-          return _this2.setState({
-            date: date.subtract(1, 'month')
-          });
+          return _this2._handleMonthChange(-1);
         },
         onNextClick: function onNextClick() {
-          return _this2.setState({
-            date: date.add(1, 'month')
-          });
+          return _this2._handleMonthChange(1);
         },
         titleTextStyle: titleTextStyle
       }), _react["default"].createElement(Table, null, _react["default"].createElement("tbody", null, _react["default"].createElement(_tableHeaders["default"], {
@@ -192,9 +201,11 @@ _defineProperty(CalendarMonthView, "propTypes", {
   dayNameTextStyle: _propTypes["default"].object,
   dayTextStyle: _propTypes["default"].object,
   activeDayStyle: _propTypes["default"].object,
-  inactiveDayStyle: _propTypes["default"].object
+  inactiveDayStyle: _propTypes["default"].object,
+  onMonthChange: _propTypes["default"].func
 });
 
 _defineProperty(CalendarMonthView, "defaultProps", {
-  renderDay: function renderDay() {}
+  renderDay: function renderDay() {},
+  onMonthChange: function onMonthChange() {}
 });

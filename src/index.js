@@ -34,11 +34,13 @@ export default class CalendarMonthView extends Component {
     dayNameTextStyle: PropTypes.object,
     dayTextStyle: PropTypes.object,
     activeDayStyle: PropTypes.object,
-    inactiveDayStyle: PropTypes.object
+    inactiveDayStyle: PropTypes.object,
+    onMonthChange: PropTypes.func
   };
 
   static defaultProps = {
-    renderDay: () => {}
+    renderDay: () => {},
+    onMonthChange: () => {}
   };
 
   state = {
@@ -61,11 +63,25 @@ export default class CalendarMonthView extends Component {
   componentDidMount() {
     this._handleWindowResize();
     window.addEventListener('resize', this._handleWindowResize);
+    this.props.onMonthChange(moment(this.state.date).startOf('month'));
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this._handleWindowResize);
   }
+
+  _handleMonthChange = months => {
+    const { onMonthChange } = this.props;
+
+    const newDate = this.state.date.add(months, 'month');
+    this.setState({ date: newDate });
+
+    onMonthChange(
+      moment(newDate)
+        .startOf('month')
+        .toISOString()
+    );
+  };
 
   render() {
     const { date, smallCalendar } = this.state;
@@ -83,8 +99,8 @@ export default class CalendarMonthView extends Component {
       <Container ref={ref => (this.calendar = ref)} style={style} width={width}>
         <TopBar
           date={date}
-          onPrevClick={() => this.setState({ date: date.subtract(1, 'month') })}
-          onNextClick={() => this.setState({ date: date.add(1, 'month') })}
+          onPrevClick={() => this._handleMonthChange(-1)}
+          onNextClick={() => this._handleMonthChange(1)}
           titleTextStyle={titleTextStyle}
         />
         <Table>

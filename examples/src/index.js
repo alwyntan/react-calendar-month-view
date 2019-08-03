@@ -72,6 +72,7 @@ export default class App extends Component {
       >
         <Title>React Calendar Month View</Title>
         <CalendarMonthView
+          onMonthChange={x => console.log(x)}
           width="600px"
           style={showDefaultStyles ? {} : { backgroundColor: '#222222', borderRadius: 10 }}
           renderDay={this._renderDay}

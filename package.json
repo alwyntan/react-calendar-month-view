@@ -1,6 +1,6 @@
 {
   "name": "react-calendar-month-view",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Monthly Calendar React Component, inspired by Squarespace",
   "main": "dist/index.js",
   "license": "MIT",

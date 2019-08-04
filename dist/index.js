@@ -134,7 +134,7 @@ function (_Component) {
       this._handleWindowResize();
 
       window.addEventListener('resize', this._handleWindowResize);
-      this.props.onMonthChange((0, _moment["default"])(this.state.date).startOf('month'));
+      this.props.onMonthChange((0, _moment["default"])(this.state.date).startOf('month').toISOString());
     }
   }, {
     key: "componentWillUnmount",

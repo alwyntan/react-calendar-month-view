@@ -63,7 +63,11 @@ export default class CalendarMonthView extends Component {
   componentDidMount() {
     this._handleWindowResize();
     window.addEventListener('resize', this._handleWindowResize);
-    this.props.onMonthChange(moment(this.state.date).startOf('month'));
+    this.props.onMonthChange(
+      moment(this.state.date)
+        .startOf('month')
+        .toISOString()
+    );
   }
 
   componentWillUnmount() {

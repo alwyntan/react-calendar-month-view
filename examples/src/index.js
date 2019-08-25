@@ -35,8 +35,8 @@ export default class App extends Component {
     this.setState({ showSampleEvents: e.target.checked });
   };
 
-  _renderDay = (day, isSmallCalendar) => {
-    console.log(isSmallCalendar);
+  _renderDay = day => {
+    const isSmallCalendar = this.calendar && this.calendar.isSmallCalendar();
     if (!isSmallCalendar) {
       const { showDefaultStyles, showSampleEvents } = this.state;
       if (!showSampleEvents) return;
@@ -76,6 +76,7 @@ export default class App extends Component {
       >
         <Title>React Calendar Month View</Title>
         <CalendarMonthView
+          ref={ref => (this.calendar = ref)}
           onMonthChange={x => console.log(x)}
           style={showDefaultStyles ? {} : { backgroundColor: '#222222', borderRadius: 10 }}
           renderDay={this._renderDay}

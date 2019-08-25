@@ -24,6 +24,8 @@ const Table = styled.table`
 `;
 
 export default class CalendarMonthView extends Component {
+  isSmallCalendar = () => this.state.smallCalendar;
+
   static propTypes = {
     // renderDay is a callback, which allows custom rendering of the given date onto the div
     // render day is called with a parameter for ISO-8601 string of the current day
@@ -39,7 +41,7 @@ export default class CalendarMonthView extends Component {
   };
 
   static defaultProps = {
-    renderDay: (date, isSmallCalendar) => {},
+    renderDay: date => {},
     onMonthChange: () => {}
   };
 

@@ -45,13 +45,40 @@ import CalendarMonthView from 'react-calendar-month-view';
 
 class App extends Component {
   // date is given as an ISO-8601 string
-  _renderDay = (date, isSmallCalendar) => {
+  _renderDay = date => {
     // return a component to render for the given date
   };
 
   render() {
     return <CalendarMonthView renderDay={this._renderDay} />;
   }
+}
+```
+
+### Functions accessible with a ref
+
+#### isSmallCalendar()
+
+Returns if the calendar is a small calendar.
+
+Example:
+
+```jsx
+_renderDay = date => {
+  if (this.calendar && this.calendar.isSmallCalendar()) {
+    // renderDay for small calendar
+  } else {
+    // renderDay for normal calendar
+  }
+};
+
+render() {
+  return (
+    <CalendarMonthView
+      ref={ref => (this.calendar = ref)}
+      renderDay={this._renderDay}
+    />
+  );
 }
 ```
 
@@ -68,17 +95,16 @@ class App extends Component {
 | activeDayStyle   | object   | null    | Custom styles for the calendar tile corresponding to the current day                                                                 |
 | inactiveDayStyle | object   | null    | Custom styles for the calendar tile corresponding days that are not the current day                                                  |
 
-### Functions:
+### Prop Functions:
 
-#### renderDay(isoDate: string, isSmallCalendar: bool)
+#### renderDay(isoDate: string)
 
-**isoDate** is a ISO-8601 string that represents the current day being rendered.\
-**isSmallCalendar** is a boolean defining if the calendar is rendered as a "small" or "large" type
+**isoDate** is a ISO-8601 string that represents the current day being rendered.
 
 Example:
 
 ```jsx
-const renderDay = (isoDate, isSmallCalendar) => {
+const renderDay = isoDate => {
   return <div> ... </div>;
 };
 ```

@@ -91,6 +91,10 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CalendarMonthView)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this), "isSmallCalendar", function () {
+      return _this.state.smallCalendar;
+    });
+
     _defineProperty(_assertThisInitialized(_this), "state", {
       date: (0, _moment["default"])().startOf('month'),
       // always set moment to the start of the month (days don't matter)
@@ -206,6 +210,6 @@ _defineProperty(CalendarMonthView, "propTypes", {
 });
 
 _defineProperty(CalendarMonthView, "defaultProps", {
-  renderDay: function renderDay(date, isSmallCalendar) {},
+  renderDay: function renderDay(date) {},
   onMonthChange: function onMonthChange() {}
 });

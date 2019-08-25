@@ -112,7 +112,7 @@ export default class TableContent extends Component {
           smallCalendar={smallCalendar}
           style={isToday ? activeDayStyle : inactiveDayStyle}
         >
-          {!smallCalendar && renderDay(currDayInMonth.toISOString())}
+          {renderDay(currDayInMonth.toISOString(), smallCalendar)}
           <DayNumber isToday={isToday} smallCalendar={smallCalendar} style={dayTextStyle}>
             <p>{currDayInMonth.format('D')}</p>
           </DayNumber>

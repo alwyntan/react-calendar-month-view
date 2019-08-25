@@ -206,6 +206,6 @@ _defineProperty(CalendarMonthView, "propTypes", {
 });
 
 _defineProperty(CalendarMonthView, "defaultProps", {
-  renderDay: function renderDay() {},
+  renderDay: function renderDay(date, isSmallCalendar) {},
   onMonthChange: function onMonthChange() {}
 });

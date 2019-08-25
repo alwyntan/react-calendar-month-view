@@ -35,25 +35,29 @@ export default class App extends Component {
     this.setState({ showSampleEvents: e.target.checked });
   };
 
-  _renderDay = day => {
-    const { showDefaultStyles, showSampleEvents } = this.state;
-    if (!showSampleEvents) return;
-    const date = moment(day);
+  _renderDay = (day, isSmallCalendar) => {
+    console.log(isSmallCalendar);
+    if (!isSmallCalendar) {
+      const { showDefaultStyles, showSampleEvents } = this.state;
+      if (!showSampleEvents) return;
+      const date = moment(day);
 
-    const diff = date.diff(moment().startOf('day'));
-    if (diff === -259200000 || diff === 259200000) {
-      return (
-        <div
-          style={{
-            boxSizing: 'border-box',
-            height: '100%',
-            width: '100%',
-            backgroundImage: 'url(https://farm2.staticflickr.com/1203/1475793643_d911a66735_m.jpg)',
-            backgroundSize: 'cover',
-            borderRadius: showDefaultStyles ? 0 : '10%'
-          }}
-        />
-      );
+      const diff = date.diff(moment().startOf('day'));
+      if (diff === -259200000 || diff === 259200000) {
+        return (
+          <div
+            style={{
+              boxSizing: 'border-box',
+              height: '100%',
+              width: '100%',
+              backgroundImage:
+                'url(https://farm2.staticflickr.com/1203/1475793643_d911a66735_m.jpg)',
+              backgroundSize: 'cover',
+              borderRadius: showDefaultStyles ? 0 : '10%'
+            }}
+          />
+        );
+      }
     }
   };
 
@@ -73,7 +77,6 @@ export default class App extends Component {
         <Title>React Calendar Month View</Title>
         <CalendarMonthView
           onMonthChange={x => console.log(x)}
-          width="600px"
           style={showDefaultStyles ? {} : { backgroundColor: '#222222', borderRadius: 10 }}
           renderDay={this._renderDay}
           titleTextStyle={showDefaultStyles ? {} : { color: 'white' }}

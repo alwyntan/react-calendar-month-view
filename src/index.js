@@ -39,7 +39,7 @@ export default class CalendarMonthView extends Component {
   };
 
   static defaultProps = {
-    renderDay: () => {},
+    renderDay: (date, isSmallCalendar) => {},
     onMonthChange: () => {}
   };
 

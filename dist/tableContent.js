@@ -132,7 +132,7 @@ function (_Component) {
           isToday: isToday,
           smallCalendar: smallCalendar,
           style: isToday ? activeDayStyle : inactiveDayStyle
-        }, !smallCalendar && renderDay(currDayInMonth.toISOString()), _react["default"].createElement(DayNumber, {
+        }, renderDay(currDayInMonth.toISOString(), smallCalendar), _react["default"].createElement(DayNumber, {
           isToday: isToday,
           smallCalendar: smallCalendar,
           style: dayTextStyle

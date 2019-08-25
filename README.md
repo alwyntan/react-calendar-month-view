@@ -45,7 +45,7 @@ import CalendarMonthView from 'react-calendar-month-view';
 
 class App extends Component {
   // date is given as an ISO-8601 string
-  _renderDay = date => {
+  _renderDay = (date, isSmallCalendar) => {
     // return a component to render for the given date
   };
 
@@ -57,16 +57,43 @@ class App extends Component {
 
 ### Props
 
-| prop             | type     | default       | description                                                                                                                                                                                                       |
-| ---------------- | -------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| width            | string   | "90%"         | Specifies the width of the calendar (height is dynamically set and therefore cannot be customized). Examples. "500px", "90vw", "90%"                                                                              |
-| renderDay        | function | null function | Callback used to render a given day. renderDay will be called with a string parameter in the format of a ISO-8601 string that represents the current day being rendered                                           |
-| onMonthChange    | function | null function | Callback that is fired when the month is changed (Fires once on component mount). onMonthChange will be called with a string parameter in the format of a ISO-8601 string representing the first day of the month |
-| titleTextStyle   | object   | null          | Custom styles for the title text                                                                                                                                                                                  |
-| dayNameTextStyle | object   | null          | Custom styles for the day names (header row of the calendar)                                                                                                                                                      |
-| dayTextStyle     | object   | null          | Custom styles for the numbers that correspond to the days on the calendar                                                                                                                                         |
-| activeDayStyle   | object   | null          | Custom styles for the calendar tile corresponding to the current day                                                                                                                                              |
-| inactiveDayStyle | object   | null          | Custom styles for the calendar tile corresponding days that are not the current day                                                                                                                               |
+| prop             | type     | default | description                                                                                                                          |
+| ---------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| width            | string   | "90%"   | Specifies the width of the calendar (height is dynamically set and therefore cannot be customized). Examples. "500px", "90vw", "90%" |
+| renderDay        | function | null    | Callback used to render a given day                                                                                                  |
+| onMonthChange    | function | null    | Callback that is fired when the month is changed (Fires once on component mount)                                                     |
+| titleTextStyle   | object   | null    | Custom styles for the title text                                                                                                     |
+| dayNameTextStyle | object   | null    | Custom styles for the day names (header row of the calendar)                                                                         |
+| dayTextStyle     | object   | null    | Custom styles for the numbers that correspond to the days on the calendar                                                            |
+| activeDayStyle   | object   | null    | Custom styles for the calendar tile corresponding to the current day                                                                 |
+| inactiveDayStyle | object   | null    | Custom styles for the calendar tile corresponding days that are not the current day                                                  |
+
+### Functions:
+
+#### renderDay(isoDate: string, isSmallCalendar: bool)
+
+**isoDate** is a ISO-8601 string that represents the current day being rendered.\
+**isSmallCalendar** is a boolean defining if the calendar is rendered as a "small" or "large" type
+
+Example:
+
+```jsx
+const renderDay = (isoDate, isSmallCalendar) => {
+  return <div> ... </div>;
+};
+```
+
+#### onMonthChange(startDate)
+
+**startDate** is a ISO-8601 string representing the start date of the current month, after the month is changed (Fires once when component is mounted)
+
+Example:
+
+```jsx
+const onMonthChange = startDate => {
+  // eg. retrieve data from gcal
+};
+```
 
 ### Notes
 

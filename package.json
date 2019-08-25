@@ -1,7 +1,7 @@
 {
   "name": "react-calendar-month-view",
-  "version": "0.4.1",
-  "description": "Monthly Calendar React Component, inspired by Squarespace",
+  "version": "0.5.0",
+  "description": "Monthly Calendar React Component, inspired by a Squarespace calendar theme",
   "main": "dist/index.js",
   "license": "MIT",
   "author": "Alwyn Tan <alwyntan97@gmail.com> (https://github.com/alwyntan)",
